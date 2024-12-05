@@ -1,0 +1,77 @@
+---
+openapi: 3.0.0
+info:
+   version: 1.3.0
+   title: reactapps open api specification
+   description: testfeature API
+   termsOfService: http://api_url/terms/
+   contact:
+      name: ContactName
+      email: hello@wolox.co
+      url: https://www.wolox.com.ar/
+   license:
+      name: Apache 2.0
+      url: https://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+   - url: http://localhost:8015
+     description: testfeature
+tags:
+- name: person
+paths:
+   "/person":
+      post:
+         tags:
+         -  person
+         description: GpCreate
+         requestBody:
+            content:
+               application/json:
+                  schema:
+                     $ref: "#/components/schemas/person"
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+      get:
+         tags:
+         -  person
+         description: GpGetAllValues
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+   "/person/userid/created_by":
+      get:
+         tags:
+         -  person
+         description: GpGetNounCreatedBy
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+components:
+   schemas:
+      person:
+         type: object
+         properties:
+            name:
+               type: "string"
+               description: Description
+            age:
+               type: "string"
+               description: Description
